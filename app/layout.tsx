@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://prigeex.com"),
+  metadataBase: new URL("https://www.prigeex.com"),
   alternates: { canonical: "/" },
   title: "PrigeeX, an institutional venue for on-chain markets.",
   description:
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description:
       "Institutional-grade infrastructure for on-chain liquidity and settlement.",
     type: "website",
-    url: "https://prigeex.com",
+    url: "https://www.prigeex.com",
     siteName: "PrigeeX",
   },
   twitter: {
