@@ -39,7 +39,7 @@ export const Hero = () => {
             loop
             playsInline
             preload="auto"
-            poster=""
+            poster="/assets/aviation-poster.jpg"
           >
             <source src="/assets/aviation.mp4" type="video/mp4" />
           </video>

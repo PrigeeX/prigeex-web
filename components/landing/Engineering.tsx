@@ -19,8 +19,8 @@ const PILLARS = [
   },
   {
     idx: "04",
-    title: "Audit-ready and publicly verified.",
-    body: "Built to an audit-ready standard, with every contract verified on the block explorer.",
+    title: "Audited and publicly verified.",
+    body: "Core protocol contracts independently audited by Hacken, with every contract verified on the block explorer.",
   },
   {
     idx: "05",

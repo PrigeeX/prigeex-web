@@ -2,6 +2,9 @@ import React from "react";
 import { DOCS } from "@/lib/docs";
 import { appPath } from "@/lib/app-url";
 
+// PGX token on Arbitrum One (release 1.0.0).
+const PGX_EXPLORER_URL = "https://arbiscan.io/token/0xccaCF9B9Ad6522B96FbE9a7f8EEaEAeDafC7C45c";
+
 export const Footer = () => (
   <footer className="foot">
     <div className="foot__inner">
@@ -27,6 +30,16 @@ export const Footer = () => (
             <li>
               <a href={DOCS.root} target="_blank" rel="noopener noreferrer">
                 Docs
+              </a>
+            </li>
+            <li>
+              <a href={DOCS.reference.contracts} target="_blank" rel="noopener noreferrer">
+                Contracts
+              </a>
+            </li>
+            <li>
+              <a href={PGX_EXPLORER_URL} target="_blank" rel="noopener noreferrer">
+                PGX on Arbiscan
               </a>
             </li>
           </ul>

@@ -10,10 +10,10 @@ export const Boarding = () => (
       <Reveal as="h2">
         The venue is live
         <br />
-        <em>on testnet.</em>
+        <em>on Arbitrum.</em>
       </Reveal>
       <Reveal as="p">
-        PrigeeX is live on Arbitrum testnet, with mainnet ahead. Connect a wallet, route a trade, provide liquidity, or stake PGX to share in protocol fees.
+        PrigeeX is live on Arbitrum One. Connect a wallet, route a trade, provide liquidity, or stake PGX to share in protocol fees.
       </Reveal>
       <Reveal as="div" className="cta-row">
         <a className="btn btn--warm" href={appPath("/swap")}>
