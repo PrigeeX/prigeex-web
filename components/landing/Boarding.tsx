@@ -1,31 +1,21 @@
-import React from "react";
-import { Reveal } from "./Reveal";
 import { DOCS } from "@/lib/docs";
-import { appPath } from "@/lib/app-url";
+
+const FAQS = [
+  { question: "Is aviation settlement available now?", answer: "No. Aviation supplier settlement is a planned direction. Customer discovery and workflow validation come before a proposed pilot." },
+  { question: "Does aviation settlement require PGX or cryptocurrency?", answer: "No approach has been selected. Conventional technology, blockchain and hybrid options will be compared during discovery." },
+  { question: "Where can I learn about the exchange risks?", answer: "Read the security information and product guides in the documentation. On-chain trading, liquidity provision and staking carry financial and smart contract risks." },
+];
 
 export const Boarding = () => (
-  <section className="boarding" id="boarding">
-    <div className="boarding__grid" aria-hidden />
-    <div className="container">
-      <Reveal as="h2">
-        The venue is live
-        <br />
-        <em>on Arbitrum.</em>
-      </Reveal>
-      <Reveal as="p">
-        PrigeeX is live on Arbitrum One. Connect a wallet, route a trade, provide liquidity, or stake PGX to share in protocol fees.
-      </Reveal>
-      <Reveal as="div" className="cta-row">
-        <a className="btn btn--warm" href={appPath("/swap")}>
-          Launch App
-          <svg viewBox="0 0 12 12" fill="none" aria-hidden>
-            <path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </a>
-        <a className="btn btn--ghost" href={DOCS.root} target="_blank" rel="noopener noreferrer">
-          Read the docs
-        </a>
-      </Reveal>
-    </div>
-  </section>
+  <>
+    <section className="security-section" id="security" aria-labelledby="security-title">
+      <div className="container section-split">
+        <p className="section-label">Security & governance</p>
+        <div><h2 id="security-title">Understand the controls.<br /><em>Understand the risks.</em></h2><p className="section-intro">PrigeeX uses Safe multisignature administration for protocol ownership. Review the documented controls, contract references and security disclosures before participating. Audits do not guarantee safety.</p><div className="resource-links"><a href={DOCS.learn.security}>Security information <span aria-hidden="true">↗</span></a><a href={DOCS.reference.contracts}>Contract references <span aria-hidden="true">↗</span></a></div></div>
+      </div>
+    </section>
+    <section className="faq-section" id="questions" aria-labelledby="faq-title">
+      <div className="container section-split"><div><p className="section-label">A few essentials</p><h2 id="faq-title">Questions,<br /><em>answered.</em></h2></div><div className="faq-list">{FAQS.map(faq => <details key={faq.question}><summary>{faq.question}<span className="faq-symbol" aria-hidden="true">+</span></summary><p>{faq.answer}</p></details>)}</div></div>
+    </section>
+  </>
 );

@@ -1,61 +1,20 @@
-import React from "react";
-import { Reveal } from "./Reveal";
+import { DOCS } from "@/lib/docs";
 
-const PILLARS = [
-  {
-    idx: "01",
-    title: "Institutional grade by design.",
-    body: "Deterministic execution and verified contracts, built on industry-standard security patterns.",
-  },
-  {
-    idx: "02",
-    title: "Precision execution.",
-    body: "Every route carries slippage and deadline guards. No stale quotes, no silent failures.",
-  },
-  {
-    idx: "03",
-    title: "Fees flow back to stakers.",
-    body: "Protocol fees route to PGX stakers, proportional, claimable, and transparent on-chain.",
-  },
-  {
-    idx: "04",
-    title: "Audited and publicly verified.",
-    body: "Core protocol contracts independently audited by Hacken, with every contract verified on the block explorer.",
-  },
-  {
-    idx: "05",
-    title: "Built for settlement at scale.",
-    body: "Infrastructure ready for treasury operations and the capital markets moving on-chain.",
-  },
-  {
-    idx: "06",
-    title: "Open analytics, no opaque metrics.",
-    body: "Every flow is indexed in the open. Pull live state directly from the subgraph; nothing hidden behind a marketing dashboard.",
-  },
+const SERVICES = [
+  { title: "Trading", body: "Exchange supported tokens through on-chain liquidity pools.", href: DOCS.guides.swap, link: "Trading guide" },
+  { title: "Liquidity", body: "Supply assets to pools that support trading, with exposure to market and liquidity risks.", href: DOCS.guides.liquidityOverview, link: "Liquidity guide" },
+  { title: "Staking", body: "The PGX staking mechanism connects token participation with protocol fee distribution.", href: DOCS.guides.stake, link: "Staking guide" },
 ];
 
 export const Engineering = () => (
-  <section className="section-dark engineering" id="engineering">
-    <div className="section-dark__grid" aria-hidden />
+  <section className="ecosystem-section" id="ecosystem" aria-labelledby="ecosystem-title">
     <div className="container">
-      <Reveal as="div" className="sec-head">
-        <div className="sec-num">Engineering</div>
-        <h2 className="sec-title">
-          Built to earn
-          <br />
-          <em>serious capital.</em>
-        </h2>
-      </Reveal>
-
-      <Reveal as="div" className="pillars">
-        {PILLARS.map((p) => (
-          <div key={p.idx} className="pillar">
-            <div className="pillar__idx">{p.idx}</div>
-            <div className="pillar__title">{p.title}</div>
-            <p className="pillar__body">{p.body}</p>
-          </div>
-        ))}
-      </Reveal>
+      <div className="section-heading"><div><p className="section-label">The exchange foundation</p><h2 id="ecosystem-title">One ecosystem.<br /><em>Three core functions.</em></h2></div><p className="heading-note">Built on Arbitrum. Product availability and access remain subject to launch approval.</p></div>
+      <div className="services">{SERVICES.map(service => <article key={service.title}><h3>{service.title}</h3><p>{service.body}</p><a className="text-link" href={service.href}>{service.link} <span aria-hidden="true">↗</span></a></article>)}</div>
+      <div className="pgx-section" id="pgx">
+        <div><p className="section-label">PGX Token</p><h3>The exchange ecosystem token.</h3></div>
+        <div><p>PGX supports the exchange staking and fee-distribution mechanism. Its use in aviation settlement has not been assumed.</p><a className="text-link" href={DOCS.investors.tokenomics}>Read PGX token details <span aria-hidden="true">↗</span></a></div>
+      </div>
     </div>
   </section>
 );

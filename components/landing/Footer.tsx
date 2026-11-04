@@ -1,60 +1,18 @@
-import React from "react";
 import { DOCS } from "@/lib/docs";
-import { appPath } from "@/lib/app-url";
-
-// PGX token on Arbitrum One (release 1.0.0).
-const PGX_EXPLORER_URL = "https://arbiscan.io/token/0xccaCF9B9Ad6522B96FbE9a7f8EEaEAeDafC7C45c";
 
 export const Footer = () => (
-  <footer className="foot">
-    <div className="foot__inner">
-      <div className="foot__grid">
-        <div className="foot__brand">
-          <div className="mark">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="foot-logo" src="/brand/logo-horizontal.svg" alt="PrigeeX" />
-          </div>
-          <p>An institutional venue for on-chain markets. Engineered on Arbitrum.</p>
+  <footer className="site-footer">
+    <div className="container">
+      <div className="site-footer__top">
+        <div className="site-footer__brand">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/logo-horizontal.svg" alt="PrigeeX" width="220" height="48" />
+          <p>Liquidity. Settlement. A clearer record.</p>
         </div>
-        <div className="foot__col">
-          <h4>Protocol</h4>
-          <ul>
-            <li><a href={appPath("/swap")}>Swap</a></li>
-            <li><a href={appPath("/pool")}>Liquidity</a></li>
-            <li><a href={appPath("/stake")}>Staking</a></li>
-          </ul>
-        </div>
-        <div className="foot__col">
-          <h4>Resources</h4>
-          <ul>
-            <li>
-              <a href={DOCS.root} target="_blank" rel="noopener noreferrer">
-                Docs
-              </a>
-            </li>
-            <li>
-              <a href={DOCS.reference.contracts} target="_blank" rel="noopener noreferrer">
-                Contracts
-              </a>
-            </li>
-            <li>
-              <a href={PGX_EXPLORER_URL} target="_blank" rel="noopener noreferrer">
-                PGX on Arbiscan
-              </a>
-            </li>
-          </ul>
-        </div>
+        <nav aria-label="Footer project links"><p className="section-label">Explore</p><a href="#about">About PrigeeX</a><a href="#flight-plan">Aviation settlement</a><a href="#ecosystem">Exchange ecosystem</a></nav>
+        <nav aria-label="Footer resource links"><p className="section-label">Resources</p><a href={DOCS.root}>Documentation</a><a href={DOCS.learn.security}>Security & risks</a><a href={DOCS.reference.faq}>Help & FAQs</a></nav>
       </div>
-      <div className="foot__bottom">
-        <div className="L">
-          <span>PRIGEEX</span>
-          <span className="sep">·</span>
-          <span>© 2026</span>
-        </div>
-        <div className="R">
-          <span>ARBITRUM</span>
-        </div>
-      </div>
+      <div className="site-footer__bottom"><span>© {new Date().getFullYear()} PrigeeX</span><span>Aviation settlement is in planning.</span></div>
     </div>
   </footer>
 );
