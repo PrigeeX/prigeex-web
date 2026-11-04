@@ -1,100 +1,58 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import { appPath } from "@/lib/app-url";
-import { Icon } from "./icons";
+import { useEffect, useRef, useState } from "react";
+import { DOCS } from "@/lib/docs";
 
-type NavLink = { href: string; label: string; soon?: boolean };
-
-// These all resolve to the dApp (app.prigeex.com) - the marketing site has
-// no routes of its own besides "/".
-const LINKS: NavLink[] = [
-  { href: "/swap", label: "Swap" },
-  { href: "/pool", label: "Liquidity" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/stake", label: "Staking" },
-  { href: "/analytics", label: "Analytics" },
-  { href: "/perpetuals", label: "Perpetuals", soon: true },
+const LINKS = [
+  ["#about", "About"],
+  ["#flight-plan", "Aviation"],
+  ["#ecosystem", "Ecosystem"],
+  ["#pgx", "PGX"],
+  ["#security", "Security"],
 ];
 
-const LINK_ICONS: Record<string, React.ReactNode> = {
-  "/swap": <Icon.Swap size={16} />,
-  "/pool": <Icon.Plus size={16} />,
-  "/portfolio": <Icon.Wallet size={16} />,
-  "/stake": <Icon.Lock size={16} />,
-  "/analytics": <Icon.Chart size={16} />,
-  "/perpetuals": <Icon.Chart size={16} />,
-};
-
 export const Nav = () => {
-  const [menuOpen, setMenuOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const header = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        menuButton.current?.focus();
+      }
+    };
+    const outside = (event: PointerEvent) => {
+      if (!header.current?.contains(event.target as Node)) setOpen(false);
+    };
+    document.addEventListener("keydown", close);
+    document.addEventListener("pointerdown", outside);
+    return () => {
+      document.removeEventListener("keydown", close);
+      document.removeEventListener("pointerdown", outside);
+    };
+  }, [open]);
 
   return (
-    <>
-      {/* Outside-click catcher. Lives outside .navwrap: its transform would
-          re-anchor position: fixed descendants. */}
-      {menuOpen && <div className="nav-menu-backdrop" onClick={() => setMenuOpen(false)} />}
-      <div className="navwrap">
-        <nav className="nav-pill" aria-label="Primary">
-          <Link className="brand" href="/" aria-label="PrigeeX home">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="brand-logo brand-logo--dark" src="/brand/logo-horizontal.svg" alt="PrigeeX" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="brand-logo brand-logo--light" src="/brand/logo-horizontal-light.svg" alt="" aria-hidden="true" />
-          </Link>
-
-          <div className="nav-links">
-            {LINKS.map((l) =>
-              l.soon ? (
-                <span key={l.href} className="link is-soon" aria-disabled>
-                  {l.label}
-                  <span className="soon-tag">Soon</span>
-                </span>
-              ) : (
-                <a key={l.href} href={appPath(l.href)} className="link">
-                  {l.label}
-                </a>
-              ),
-            )}
-          </div>
-
-          <a className="cta" href={appPath("/swap")}>
-            Launch App
-            <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
-              <path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
-
-          <button
-            className="nav-menu-btn"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((o) => !o)}
-          >
-            {menuOpen ? <Icon.Close size={16} /> : <Icon.Menu size={18} />}
-          </button>
+    <header className="site-header" ref={header}>
+      <div className="site-header__inner">
+        <a className="site-brand" href="#top" aria-label="PrigeeX home" onClick={() => setOpen(false)}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/logo-horizontal.svg" alt="PrigeeX" width="220" height="48" />
+        </a>
+        <nav className="site-nav" aria-label="Primary">
+          {LINKS.map(([href, label]) => <a href={href} key={href}>{label}</a>)}
         </nav>
-
-        {menuOpen && (
-          <nav className="nav-menu" aria-label="Pages">
-            {LINKS.map((l) =>
-              l.soon ? (
-                <span key={l.href} className="menu-link is-soon" aria-disabled>
-                  <span className="menu-link__icon">{LINK_ICONS[l.href]}</span>
-                  {l.label}
-                  <span className="soon-tag">Soon</span>
-                </span>
-              ) : (
-                <a key={l.href} href={appPath(l.href)} className="menu-link" onClick={() => setMenuOpen(false)}>
-                  <span className="menu-link__icon">{LINK_ICONS[l.href]}</span>
-                  {l.label}
-                </a>
-              ),
-            )}
-          </nav>
-        )}
+        <a className="docs-link" href={DOCS.root}>Documentation <span aria-hidden="true">↗</span></a>
+        <button className="menu-toggle" ref={menuButton} aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}>
+          <span aria-hidden="true">{open ? "−" : "+"}</span>
+        </button>
       </div>
-    </>
+      {open && <nav id="mobile-navigation" className="mobile-navigation" aria-label="Mobile">
+        {LINKS.map(([href, label]) => <a href={href} key={href} onClick={() => setOpen(false)}>{label}</a>)}
+      </nav>}
+    </header>
   );
 };
