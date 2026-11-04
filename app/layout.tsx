@@ -4,9 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.prigeex.com"),
   alternates: { canonical: "/" },
-  title: "PrigeeX, an institutional venue for on-chain markets.",
+  title: "PrigeeX | Liquidity & Aviation Settlement Infrastructure",
   description:
-    "PrigeeX is institutional-grade infrastructure for on-chain liquidity and settlement. Built for capital arriving on-chain.",
+    "Explore the PrigeeX exchange ecosystem and its planned aviation supplier settlement infrastructure.",
   keywords: [
     "PrigeeX", "PGX", "DEX", "institutional", "fintech",
     "liquidity", "settlement", "staking", "Arbitrum",
@@ -18,25 +18,25 @@ export const metadata: Metadata = {
     apple: "/brand/prigeex-mark-solid.svg",
   },
   openGraph: {
-    title: "PrigeeX, an institutional venue for on-chain markets.",
+    title: "PrigeeX | Liquidity & Aviation Settlement Infrastructure",
     description:
-      "Institutional-grade infrastructure for on-chain liquidity and settlement.",
+      "On-chain exchange infrastructure and planned aviation supplier settlement.",
     type: "website",
     url: "https://www.prigeex.com",
     siteName: "PrigeeX",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PrigeeX, an institutional venue for on-chain markets.",
+    title: "PrigeeX | Liquidity & Aviation Settlement Infrastructure",
     description:
-      "Institutional-grade infrastructure for on-chain liquidity and settlement.",
+      "On-chain exchange infrastructure and planned aviation supplier settlement.",
   },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#06070a",
+  themeColor: "#0d151e",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -1,10 +1,6 @@
-"use client";
-
-import React from "react";
 import { Nav } from "@/components/Nav";
 import { Hero } from "./Hero";
 import { Manifest } from "./Manifest";
-import { RulerTick } from "./RulerTick";
 import { FlightPlan } from "./FlightPlan";
 import { Engineering } from "./Engineering";
 import { Boarding } from "./Boarding";
@@ -12,15 +8,16 @@ import { Footer } from "./Footer";
 import "./landing.css";
 
 export const Landing = () => (
-  <div className="landing-root">
+  <div className="landing-root" id="top">
+    <a className="skip-link" href="#main-content">Skip to content</a>
     <Nav />
-    <Hero />
-    <Manifest />
-    <FlightPlan />
-    <RulerTick label="Engineering" />
-    <Engineering />
-    <RulerTick label="Get started" />
-    <Boarding />
+    <main id="main-content">
+      <Hero />
+      <Manifest />
+      <FlightPlan />
+      <Engineering />
+      <Boarding />
+    </main>
     <Footer />
   </div>
 );
