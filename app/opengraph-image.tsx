@@ -5,7 +5,7 @@ import { ImageResponse } from "next/og";
 // Link-preview card for prigeex.com (X, Telegram, Slack, LinkedIn). Rendered
 // once at build time from the hero poster frame.
 
-export const alt = "PrigeeX, an institutional venue for on-chain markets.";
+export const alt = "PrigeeX | Liquidity & Aviation Settlement Infrastructure";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -15,7 +15,7 @@ export default async function OpengraphImage() {
 
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", position: "relative", background: "#06070a" }}>
+      <div style={{ width: "100%", height: "100%", display: "flex", position: "relative", background: "#0d151e" }}>
         <img
           src={bg}
           alt=""
@@ -46,10 +46,10 @@ export default async function OpengraphImage() {
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: 88, lineHeight: 1.02, color: "#F2F1EC", letterSpacing: -2 }}>Liquidity,</div>
-            <div style={{ fontSize: 88, lineHeight: 1.02, color: "#E8C089", letterSpacing: -2 }}>at altitude.</div>
+            <div style={{ fontSize: 78, lineHeight: 1.02, color: "#F2F1EC", letterSpacing: -2 }}>A clearer path</div>
+            <div style={{ fontSize: 78, lineHeight: 1.02, color: "#E8C089", letterSpacing: -2 }}>to settlement.</div>
             <div style={{ marginTop: 28, fontSize: 30, color: "rgba(231,230,225,0.78)", maxWidth: 620 }}>
-              An institutional venue for on-chain markets. Live on Arbitrum One.
+              Exchange infrastructure. Aviation settlement in planning.
             </div>
           </div>
         </div>
